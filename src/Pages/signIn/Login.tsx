@@ -1,24 +1,24 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import Logo from "../../Assets/logo.svg";
-import ErrorMessage from "../Signup/errorMessage";
-import { authContext } from "../../Utils/Authcontext";
-import CustomRedirect from "../../Utils/CustomRedirect";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+import Logo from '../../Assets/logo.svg';
+import ErrorMessage from '../Signup/errorMessage';
+import { authContext } from '../../Utils/Authcontext';
+import CustomRedirect from '../../Utils/CustomRedirect';
+import { Link } from 'react-router-dom';
 
 function Login() {
-  console.log("rendering login page");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  console.log('rendering login page');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signIn, token } = useContext(authContext);
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-    if (email === "" || password === "") {
-      setError("Email and Password are required");
+    if (email === '' || password === '') {
+      setError('Email and Password are required');
       return;
     }
     setLoading(true);
@@ -30,16 +30,16 @@ function Login() {
     }
     await axios
       .request<AxiosInterface>({
-        url: "https://kojjac.herokuapp.com/users/login",
+        url: 'https://kojjac.herokuapp.com/users/login',
         data: {
           email,
           password,
         },
-        method: "post",
+        method: 'post',
         withCredentials: true,
       })
       .then(async (response) => {
-        console.log("Success:", response);
+        console.log('Success:', response);
         const tokenFromServer = response.data.token;
         signIn(tokenFromServer);
         setLoading(false);
@@ -85,8 +85,8 @@ function Login() {
           {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
 
           <Button disabled={loading}>
-            {" "}
-            {loading ? "logging in...." : "Login"}{" "}
+            {' '}
+            {loading ? 'logging in....' : 'Login'}{' '}
           </Button>
         </form>
         <SSOWrapper>
@@ -111,15 +111,15 @@ function Login() {
         </SSOWrapper>
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "1rem",
+            display: 'flex',
+            justifyContent: 'space-between',
+            marginTop: '1rem',
           }}
         >
-          <Link to="/forgetpassword" style={{ color: "blue" }}>
+          <Link to="/forgetpassword" style={{ color: 'blue' }}>
             Forget password?
           </Link>
-          <Link to="/signup" style={{ color: "blue" }}>
+          <Link to="/signup" style={{ color: 'blue' }}>
             Signup here?
           </Link>
         </div>
@@ -149,7 +149,7 @@ export const SSOWrapper = styled.div`
   }
 `;
 
-export const GoogleButton = styled.button`
+export const GoogleButton = styled.div`
   display: flex;
   align-items: center;
   width: 444px;
@@ -171,7 +171,7 @@ export const GoogleButton = styled.button`
     color: #ffffff;
   }
 `;
-export const FacebookButton = styled.button`
+export const FacebookButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

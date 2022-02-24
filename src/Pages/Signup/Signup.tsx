@@ -106,7 +106,7 @@ function Signup() {
             >
               <GoogleButton>
                 <i className="fab fa-google"></i>
-                <p className="buttonText">Login With Google Account</p>
+                <p className="buttonText">Signup With Google Account</p>
               </GoogleButton>
             </a>
             <a
@@ -115,7 +115,7 @@ function Signup() {
             >
               <FacebookButton>
                 <i className="fab fa-facebook-square"></i>
-                <p className="buttonText">Login With Facebook Account</p>
+                <p className="buttonText">Signup With Facebook Account</p>
               </FacebookButton>
             </a>
           </SSOWrapper>

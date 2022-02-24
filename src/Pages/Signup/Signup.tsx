@@ -21,7 +21,7 @@ function Signup() {
 
   const submitHandler = async (e: any) => {
     e.preventDefault();
-
+    setError(false);
     try {
       setLoading(true);
 
@@ -38,8 +38,8 @@ function Signup() {
       setEmailSent(true);
       setLoading(false);
     } catch (error: any) {
-      console.log(error);
-      setError(error.response.data.message);
+      console.log(error.response);
+      setError(error.response.data || error.response.data.message);
       setLoading(false);
     }
   };
@@ -48,10 +48,10 @@ function Signup() {
     <CustomRedirect />
   ) : (
     <Wrapper>
-      {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
       <div className="login">
         <img className="logo" src={Logo} alt="Login" />
         <BorderBottom />
+        {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         <form onSubmit={submitHandler}>
           <label>
             <h3> Full Name</h3>

@@ -7,7 +7,10 @@ interface Props {
 
 const errorMessage: FC<Props> = ({ children, variant = 'info' }) => {
   return (
-    <Alert variant={variant} style={{ fontSize: 20, color: 'red' }}>
+    <Alert
+      variant={variant}
+      style={{ fontSize: 15, color: 'red', marginBottom: '10px' }}
+    >
       <strong> {children}</strong>
     </Alert>
   );

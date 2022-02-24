@@ -1,18 +1,18 @@
-import { useState, useContext } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import Logo from "../../Assets/logo.svg";
-import ErrorMessage from "./errorMessage";
-import { useHistory, Link } from "react-router-dom";
-import { GoogleButton, FacebookButton, SSOWrapper } from "../signIn/Login";
-import { authContext } from "../../Utils/Authcontext";
-import CustomRedirect from "../../Utils/CustomRedirect";
+import { useState, useContext } from 'react';
+import axios from 'axios';
+import styled from 'styled-components';
+import Logo from '../../Assets/logo.svg';
+import ErrorMessage from './errorMessage';
+import { useHistory, Link } from 'react-router-dom';
+import { GoogleButton, FacebookButton, SSOWrapper } from '../signIn/Login';
+import { authContext } from '../../Utils/Authcontext';
+import CustomRedirect from '../../Utils/CustomRedirect';
 
 function Signup() {
-  const [fullname, setfullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+  const [fullname, setfullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
@@ -26,7 +26,7 @@ function Signup() {
       setLoading(true);
 
       const { data } = await axios.post(
-        "https://kojjac.herokuapp.com/users/signup",
+        'https://kojjac.herokuapp.com/users/signup',
         {
           fullname,
           email,
@@ -78,7 +78,7 @@ function Signup() {
             <h3> Password</h3>
             <Input
               type="password"
-              placeholder="Enter Paasword"
+              placeholder="Enter Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -97,28 +97,28 @@ function Signup() {
           </label>
 
           <Button disabled={loading}>
-            {loading ? "Signing up" : "Signup"}{" "}
+            {loading ? 'Signing up' : 'Signup'}{' '}
           </Button>
           <SSOWrapper>
-          <a
-            className="buttonAtag"
-            href="https://kojjac.herokuapp.com/users/google"
-          >
-            <GoogleButton>
-              <i className="fab fa-google"></i>
-              <p className="buttonText">Login With Google Account</p>
-            </GoogleButton>
-          </a>
-          <a
-            className="buttonAtag"
-            href="https://kojjac.herokuapp.com/users/auth/facebook/callback"
-          >
-            <FacebookButton>
-              <i className="fab fa-facebook-square"></i>
-              <p className="buttonText">Login With Facebook Account</p>
-            </FacebookButton>
-          </a>
-        </SSOWrapper>
+            <a
+              className="buttonAtag"
+              href="https://kojjac.herokuapp.com/users/google"
+            >
+              <GoogleButton>
+                <i className="fab fa-google"></i>
+                <p className="buttonText">Login With Google Account</p>
+              </GoogleButton>
+            </a>
+            <a
+              className="buttonAtag"
+              href="https://kojjac.herokuapp.com/users/auth/facebook/callback"
+            >
+              <FacebookButton>
+                <i className="fab fa-facebook-square"></i>
+                <p className="buttonText">Login With Facebook Account</p>
+              </FacebookButton>
+            </a>
+          </SSOWrapper>
         </form>
 
         <Link to="/login">Go to login page</Link>
